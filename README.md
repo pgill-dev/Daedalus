@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Daedalus
 <<<<<<< HEAD
 
@@ -109,3 +110,6 @@ Repository skeleton
 =======
 AI-assisted engineering platform designed to support the planning, documentation, security analysis, and controlled automation of a self-hosted Zero Trust engineering lab.
 >>>>>>> c7deed0b1ad1fe7057cb1798c2b323eaca29621a
+=======
+
+>>>>>>> 4400a5340567e8e4dfd742aba24568e471d3590f
