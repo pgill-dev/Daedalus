@@ -9,15 +9,23 @@ This index maps the Daedalus repository so humans and Daedalus can quickly find 
 | Path | Purpose |
 |---|---|
 | `README.md` | Main project overview |
+| `CHANGELOG.md` | Project change history |
 | `docs/ARCHITECTURE-OVERVIEW.md` | High-level platform architecture |
 | `docs/DAEDALUS-OPERATING-MANUAL.md` | Main operating manual |
 | `docs/CLI-USAGE.md` | CLI usage documentation |
 | `docs/PORTFOLIO-SUMMARY.md` | Portfolio-ready project summary |
 | `docs/PROJECT-INDEX.md` | Repository index |
 | `docs/QUICKSTART.md` | How to use the repository |
+| `docs/RELEASE-CHECKLIST.md` | Release checklist |
 | `docs/ROADMAP.md` | Project roadmap |
 | `docs/WORKFLOW-MAP.md` | Workflow relationship map |
 | `memory/README.md` | Project memory overview |
+
+## Releases
+
+| Path | Purpose |
+|---|---|
+| `docs/releases/v0.2.0.md` | v0.2.0 release notes |
 
 ## Workflows
 
