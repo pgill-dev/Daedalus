@@ -1,183 +1,154 @@
 # Daedalus Roadmap
 
-## Phase I — Engineering Brain
+## Purpose
 
-### Objective
+This roadmap tracks planned development for Daedalus.
 
-Create the reasoning engine and structured engineering output process.
+Daedalus is being built in phases, starting with repository structure and engineering workflows before moving into tooling and interface development.
 
-### Deliverables
+## Phase 1: Baseline Framework
 
-- Local LLM runtime
-- System prompt
-- Prompt library
-- Engineering personas
-- Markdown output templates
-- Architecture templates
-- Validation checklist template
-- Rollback plan template
+Status: Complete
 
-### Exit Criteria
+Goals:
 
-A request such as:
+- Establish repository structure
+- Define mission and scope
+- Create project memory
+- Create baseline workflows
+- Create templates and schemas
+- Create operating manual
+- Create end-to-end example
 
-> Build Vaultwarden.
+Completed:
 
-Produces:
+- [x] Baseline repository
+- [x] Project memory
+- [x] Engineering request workflow
+- [x] Engineering package output contract
+- [x] Security review workflow
+- [x] Validation and rollback workflow
+- [x] IaC generation guardrails
+- [x] ADR workflow
+- [x] Operating manual
+- [x] Project index
+- [x] Workflow map
+- [x] End-to-end example
+- [x] Portfolio README and roadmap
 
-- Architecture
-- Risks
-- Checklist
-- Validation plan
-- Rollback plan
-- ClickUp-style task hierarchy
-- Git repository structure
+## Phase 2: Local Tooling
 
-## Phase II — Project Management
+Status: Planned
 
-### Objective
+Goals:
 
-Integrate project planning outputs with task-management and Git workflows.
+- Add simple local tooling to generate artifacts from templates
+- Add repository validation helpers
+- Add schema validation
+- Improve repeatability
 
-### Integrations
+Planned work:
 
-- ClickUp
-- GitHub or Gitea
+- [ ] Create CLI skeleton
+- [ ] Add command to create engineering request
+- [ ] Add command to create engineering package
+- [ ] Add command to create ADR
+- [ ] Add command to create validation checklist
+- [ ] Add command to create rollback plan
+- [ ] Add command to validate schemas
+- [ ] Add command to print workflow map
+- [ ] Add basic tests
 
-### Deliverables
+## Phase 3: Daedalus Web Interface
 
-- Epic generation
-- Task generation
-- Milestone generation
-- Sprint plan generation
-- Repository skeleton generation
+Status: Planned
 
-### Exit Criteria
+Goals:
 
-One prompt creates a complete engineering project plan with tasks and repository structure.
+- Create a simple web interface for the Daedalus workflow
+- Allow humans to submit requests and generate structured artifacts
+- Keep approval gates visible
 
-## Phase III — Infrastructure Awareness
+Planned work:
 
-### Objective
+- [ ] Build basic web UI
+- [ ] Add request intake form
+- [ ] Add artifact preview
+- [ ] Add approval status fields
+- [ ] Add links to project memory
+- [ ] Add export-to-Markdown support
+- [ ] Add GitHub issue integration option
 
-Allow Daedalus to understand the environment without making changes.
+## Phase 4: Lab Integration
 
-### Integrations
+Status: Planned
 
-- Proxmox
-- Kubernetes
-- Proxmox Backup Server
+Goals:
 
-### Capabilities
+- Connect Daedalus artifacts to real lab workflows without autonomous execution
+- Keep implementation manual or approval-gated
 
-Read-only:
+Planned work:
 
-- Inventory
-- VM status
-- Cluster health
-- Backup status
+- [ ] Add Proxmox planning templates
+- [ ] Add Cloudflare Tunnel planning templates
+- [ ] Add Kubernetes service planning templates
+- [ ] Add Ansible role proposal templates
+- [ ] Add backup and restore package examples
+- [ ] Add identity-aware access examples
+- [ ] Add internal service deployment examples
 
-Generate:
+## Phase 5: Security and Compliance Expansion
 
-- IaC
-- Kubernetes manifests
-- Documentation
-- Change plans
+Status: Planned
 
-### Exit Criteria
+Goals:
 
-Daedalus can reference current lab state and produce accurate plans without write access.
+- Improve threat modeling and security review depth
+- Add stronger validation and guardrail checks
 
-## Phase IV — Engineering Memory
+Planned work:
 
-### Objective
+- [ ] Add threat model examples
+- [ ] Add abuse-case library
+- [ ] Add Zero Trust checklist
+- [ ] Add secrets handling checklist
+- [ ] Add public exposure checklist
+- [ ] Add backup safety checklist
+- [ ] Add privileged automation checklist
 
-Preserve architecture decisions, design rationale, runbooks, and lessons learned.
+## Phase 6: Portfolio Polish
 
-### Store
+Status: In Progress
 
-- Architecture decisions
-- Network diagrams
-- Inventory
-- Runbooks
-- Lessons learned
-- Change history
+Goals:
 
-### Example Query
+- Make the project understandable to engineers, recruiters, and future maintainers
+- Show real engineering judgment and process
 
-> Why is VLAN 30 isolated?
+Planned work:
 
-Daedalus should answer with the original design rationale and supporting documentation.
+- [x] Portfolio summary
+- [x] README refresh
+- [ ] Add diagrams
+- [ ] Add screenshots
+- [ ] Add architecture overview
+- [ ] Add demo workflow
+- [ ] Add LinkedIn-ready project summary
 
-## Phase V — Security Engineering
+## Future Ideas
 
-### Objective
+Potential future additions:
 
-Integrate security validation and hardening workflows.
-
-### Integrations
-
-- Rapid7
-- CIS benchmarks
-- STIG references
-- GOAD lab findings
-
-### Generate
-
-- Hardening recommendations
-- Validation checklists
-- Risk assessments
-- Threat models
-- Remediation plans
-
-### Exit Criteria
-
-Daedalus can produce security-aware engineering packages tied to findings, controls, and validation steps.
-
-## Phase VI — Controlled Automation
-
-### Objective
-
-Enable human-approved execution after planning and validation.
-
-### Workflow
-
-```text
-User request
-  ↓
-Architecture
-  ↓
-ClickUp tasks
-  ↓
-Git artifacts
-  ↓
-IaC generation
-  ↓
-Human approval
-  ↓
-Execution
-  ↓
-Validation
-  ↓
-Documentation update
-```
-
-### Required Controls
-
-- Explicit approval
-- Change summary
-- Validation plan
-- Rollback plan
-- Audit trail
-- No silent execution
-
-## Outliers
-
-Do not build:
-
-- Another chatbot
-- Another ChatGPT wrapper
-- Voice assistant
-- Autonomous infrastructure controller
-
-The differentiator is engineering reasoning.
+- Local SQLite project memory index
+- Static site documentation output
+- GitHub Actions validation
+- Markdown linting
+- Schema linting
+- Mermaid diagrams
+- Request-to-package generator
+- Human approval tracker
+- Artifact status dashboard
+- Integration with a local LLM
+- Integration with a private Git server
+- Integration with a lab web portal
