@@ -19,12 +19,26 @@ The current workflow checks:
 - Repository structure
 - Required files and directories
 - JSON schema syntax
-- Merge conflict markers
+- Real Git merge conflict markers
 - Obvious plaintext secret patterns
-- Markdown top-level headings
+- Markdown top-level headings where appropriate
 - CLI package installation
 - CLI unit tests
 - CLI smoke commands
+
+## Important Validation Notes
+
+GitHub issue templates use YAML frontmatter and are exempt from the top-level heading check.
+
+The merge conflict check only flags real Git conflict marker lines:
+
+```text
+<<<<<<< branch
+=======
+>>>>>>> branch
+```
+
+It should not flag Markdown tables, YAML frontmatter, or normal separators.
 
 ## Commands Run by CI
 
@@ -60,38 +74,6 @@ If CI fails:
 5. Commit the fix.
 6. Push again.
 7. Confirm CI passes.
-
-## Common Failure Types
-
-### Missing Required File
-
-The repository validation script expects a file that does not exist.
-
-Fix by adding the missing file or updating `scripts/validate_repo.py` if the requirement changed intentionally.
-
-### Invalid JSON
-
-A schema file contains invalid JSON.
-
-Fix the JSON syntax and rerun validation.
-
-### Merge Conflict Marker
-
-A file contains unresolved Git conflict markers.
-
-Remove markers such as:
-
-```text
-<<<<<<< HEAD
-=======
->>>>>>> branch-name
-```
-
-### CLI Test Failure
-
-A CLI behavior changed but tests were not updated, or a real bug was introduced.
-
-Fix the CLI or update the tests to match the intended behavior.
 
 ## Completion Criteria
 

@@ -19,6 +19,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 REQUIRED_PATHS = [
     "README.md",
     "docs/DAEDALUS-OPERATING-MANUAL.md",
+    "docs/CLI-USAGE.md",
     "docs/PORTFOLIO-SUMMARY.md",
     "docs/PROJECT-INDEX.md",
     "docs/QUICKSTART.md",
@@ -30,6 +31,7 @@ REQUIRED_PATHS = [
     "docs/workflows/validation-and-rollback-workflow.md",
     "docs/workflows/iac-generation-guardrails.md",
     "docs/workflows/adr-workflow.md",
+    "docs/workflows/ci-validation-workflow.md",
     "prompts/system/daedalus-operating-rules.md",
     "prompts/workflows/engineering-request-review.md",
     "prompts/workflows/security-review.md",
@@ -56,10 +58,16 @@ REQUIRED_PATHS = [
     "memory/decisions/README.md",
     "memory/decisions/0001-project-memory.md",
     "memory/outputs/README.md",
+    "memory/plans/README.md",
     "memory/rollback/README.md",
     "memory/threat-models/README.md",
     "memory/validation/README.md",
     ".github/ISSUE_TEMPLATE/engineering-request.md",
+    ".github/ISSUE_TEMPLATE/bug-report.md",
+    ".github/ISSUE_TEMPLATE/documentation-update.md",
+    ".github/ISSUE_TEMPLATE/workflow-improvement.md",
+    ".github/pull_request_template.md",
+    ".github/workflows/validate-repo.yml",
     "examples/end-to-end/internal-docs-service/01-engineering-request.md",
     "examples/end-to-end/internal-docs-service/02-readiness-review.md",
     "examples/end-to-end/internal-docs-service/03-engineering-package.md",
@@ -74,9 +82,13 @@ REQUIRED_DIRECTORIES = [
     ".github",
     ".github/ISSUE_TEMPLATE",
     ".github/workflows",
+    "daedalus",
+    "daedalus/generators",
     "docs",
+    "docs/diagrams",
     "docs/workflows",
     "examples",
+    "examples/cli",
     "examples/end-to-end",
     "memory",
     "memory/architecture",
@@ -97,13 +109,16 @@ REQUIRED_DIRECTORIES = [
     "templates/kubernetes",
     "templates/scripts",
     "templates/terraform",
+    "tests",
 ]
 
 
+# Match real Git conflict marker lines only.
+# Do not flag Markdown horizontal rules, YAML frontmatter, or table separators.
 FORBIDDEN_PATTERNS = [
-    re.compile(r"<<<<<<<\s+HEAD"),
-    re.compile(r"======="),
-    re.compile(r">>>>>>>\s+.+"),
+    re.compile(r"(?m)^<<<<<<< .+$"),
+    re.compile(r"(?m)^=======$"),
+    re.compile(r"(?m)^>>>>>>> .+$"),
 ]
 
 
@@ -112,6 +127,11 @@ SECRET_PATTERNS = [
     re.compile(r"(?i)token\s*=\s*['\"][A-Za-z0-9_\-]{16,}['\"]"),
     re.compile(r"(?i)password\s*=\s*['\"][^'\"]{8,}['\"]"),
     re.compile(r"-----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY-----"),
+]
+
+
+MARKDOWN_HEADING_EXEMPTIONS = [
+    ".github/ISSUE_TEMPLATE/",
 ]
 
 
@@ -187,14 +207,19 @@ def iter_text_files() -> list[Path]:
         ".tf",
         ".py",
         ".txt",
+        ".toml",
+        ".mmd",
     }
 
     ignored_dirs = {
         ".git",
         "__pycache__",
+        ".pytest_cache",
         ".venv",
         "venv",
         "node_modules",
+        "build",
+        "dist",
     }
 
     files: list[Path] = []
@@ -244,6 +269,11 @@ def validate_no_obvious_secrets(failures: list[str]) -> None:
         pass_check("No obvious plaintext secret patterns found")
 
 
+def markdown_heading_exempt(file_path: Path) -> bool:
+    rel = str(file_path.relative_to(REPO_ROOT)).replace("\\", "/")
+    return any(rel.startswith(prefix) for prefix in MARKDOWN_HEADING_EXEMPTIONS)
+
+
 def validate_markdown_headings(failures: list[str]) -> None:
     print_header("Markdown heading checks")
     markdown_files = sorted(REPO_ROOT.rglob("*.md"))
@@ -256,6 +286,9 @@ def validate_markdown_headings(failures: list[str]) -> None:
 
     for file_path in markdown_files:
         if any(part in {".git", "node_modules"} for part in file_path.parts):
+            continue
+
+        if markdown_heading_exempt(file_path):
             continue
 
         text = file_path.read_text(encoding="utf-8", errors="ignore")
