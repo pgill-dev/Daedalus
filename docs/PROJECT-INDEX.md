@@ -8,8 +8,13 @@ This index maps the Daedalus repository so humans and Daedalus can quickly find 
 
 | Path | Purpose |
 |---|---|
+| `README.md` | Main project overview |
 | `docs/DAEDALUS-OPERATING-MANUAL.md` | Main operating manual |
+| `docs/CLI-USAGE.md` | CLI usage documentation |
+| `docs/PORTFOLIO-SUMMARY.md` | Portfolio-ready project summary |
 | `docs/PROJECT-INDEX.md` | Repository index |
+| `docs/QUICKSTART.md` | How to use the repository |
+| `docs/ROADMAP.md` | Project roadmap |
 | `docs/WORKFLOW-MAP.md` | Workflow relationship map |
 | `memory/README.md` | Project memory overview |
 
@@ -23,12 +28,22 @@ This index maps the Daedalus repository so humans and Daedalus can quickly find 
 | `docs/workflows/validation-and-rollback-workflow.md` | Defines validation and rollback process |
 | `docs/workflows/iac-generation-guardrails.md` | Defines safe IaC generation rules |
 | `docs/workflows/adr-workflow.md` | Defines architecture decision records |
+| `docs/workflows/ci-validation-workflow.md` | Defines repository and CLI CI validation |
 
 ## GitHub Issue Templates
 
 | Path | Purpose |
 |---|---|
 | `.github/ISSUE_TEMPLATE/engineering-request.md` | Engineering request intake form |
+| `.github/ISSUE_TEMPLATE/bug-report.md` | Bug report form |
+| `.github/ISSUE_TEMPLATE/documentation-update.md` | Documentation update form |
+| `.github/ISSUE_TEMPLATE/workflow-improvement.md` | Workflow improvement form |
+
+## GitHub Workflows
+
+| Path | Purpose |
+|---|---|
+| `.github/workflows/validate-repo.yml` | Runs repository validation, CLI tests, and CLI smoke checks |
 
 ## Workflow Prompts
 
@@ -83,6 +98,17 @@ This index maps the Daedalus repository so humans and Daedalus can quickly find 
 | `schemas/iac-package.schema.json` | IaC package schema |
 | `schemas/adr.schema.json` | ADR schema |
 
+## CLI and Tooling
+
+| Path | Purpose |
+|---|---|
+| `daedalus/cli.py` | CLI entry point |
+| `daedalus/generators/` | Artifact generators |
+| `scripts/validate_repo.py` | Repository validation script |
+| `tests/` | CLI and generator tests |
+| `pytest.ini` | Pytest configuration |
+| `pyproject.toml` | Python project metadata |
+
 ## Memory
 
 | Path | Purpose |
@@ -90,7 +116,7 @@ This index maps the Daedalus repository so humans and Daedalus can quickly find 
 | `memory/architecture/` | Architecture notes |
 | `memory/decisions/` | ADRs and decision records |
 | `memory/outputs/` | Generated outputs |
-| `memory/plans/` | Engineering plans |
+| `memory/plans/` | Engineering plans and requests |
 | `memory/rollback/` | Rollback plans and records |
 | `memory/threat-models/` | Threat models and security reviews |
 | `memory/validation/` | Validation checklists and results |
@@ -100,3 +126,5 @@ This index maps the Daedalus repository so humans and Daedalus can quickly find 
 | Path | Purpose |
 |---|---|
 | `examples/engineering-request.md` | Example engineering request |
+| `examples/end-to-end/internal-docs-service/` | Complete end-to-end workflow example |
+| `examples/cli/` | CLI usage examples |
