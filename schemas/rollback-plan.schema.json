@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pgill-dev/Daedalus/schemas/rollback-plan.schema.json",
+  "title": "Daedalus Rollback Plan",
+  "type": "object",
+  "required": [
+    "date",
+    "author",
+    "status",
+    "risk_level",
+    "summary",
+    "rollback_trigger",
+    "preconditions",
+    "required_known_good_state",
+    "rollback_steps",
+    "rollback_validation",
+    "risks_during_rollback",
+    "escalation_plan",
+    "human_approval_gate"
+  ],
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "author": {
+      "type": "string",
+      "const": "Daedalus"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["Proposed", "Human Reviewed", "Completed", "Failed", "Superseded"]
+    },
+    "related_request": {
+      "type": "string"
+    },
+    "related_package": {
+      "type": "string"
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": ["Low", "Medium", "High", "Critical"]
+    },
+    "summary": {
+      "type": "string"
+    },
+    "rollback_trigger": {
+      "type": "string"
+    },
+    "preconditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "required_known_good_state": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rollback_steps": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rollback_validation": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/check"
+      }
+    },
+    "risks_during_rollback": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["risk", "impact", "mitigation"],
+        "properties": {
+          "risk": {
+            "type": "string"
+          },
+          "impact": {
+            "type": "string"
+          },
+          "mitigation": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "escalation_plan": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "human_approval_gate": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "follow_up_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "check": {
+      "type": "object",
+      "required": ["id", "check", "expected_result", "evidence", "result", "notes"],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "check": {
+          "type": "string"
+        },
+        "expected_result": {
+          "type": "string"
+        },
+        "evidence": {
+          "type": "string"
+        },
+        "result": {
+          "type": "string",
+          "enum": ["Not Tested", "Pass", "Fail", "Blocked", "Not Applicable"]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
