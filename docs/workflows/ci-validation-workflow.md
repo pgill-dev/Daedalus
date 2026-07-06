@@ -30,15 +30,17 @@ The current workflow checks:
 
 GitHub issue templates use YAML frontmatter and are exempt from the top-level heading check.
 
-The merge conflict check only flags real Git conflict marker lines:
+The merge conflict check flags real Git conflict marker lines.
+
+Safe written example:
 
 ```text
-<<<<<<< branch
-=======
->>>>>>> branch
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; branch
+--- conflict separator ---
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; branch
 ```
 
-It should not flag Markdown tables, YAML frontmatter, or normal separators.
+This documentation intentionally avoids writing the exact raw marker sequence so the repository validator does not flag the explanation itself.
 
 ## Commands Run by CI
 
@@ -74,6 +76,32 @@ If CI fails:
 5. Commit the fix.
 6. Push again.
 7. Confirm CI passes.
+
+## Common Failure Types
+
+### Missing Required File
+
+The repository validation script expects a file that does not exist.
+
+Fix by adding the missing file or updating `scripts/validate_repo.py` if the requirement changed intentionally.
+
+### Invalid JSON
+
+A schema file contains invalid JSON.
+
+Fix the JSON syntax and rerun validation.
+
+### Merge Conflict Marker
+
+A file contains unresolved Git conflict marker lines from a merge.
+
+Remove the marker lines and keep the intended content.
+
+### CLI Test Failure
+
+A CLI behavior changed but tests were not updated, or a real bug was introduced.
+
+Fix the CLI or update the tests to match the intended behavior.
 
 ## Completion Criteria
 

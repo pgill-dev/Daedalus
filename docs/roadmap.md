@@ -4,21 +4,11 @@
 
 This roadmap tracks planned development for Daedalus.
 
-Daedalus is being built in phases, starting with repository structure and engineering workflows before moving into tooling and interface development.
+Daedalus is being built in phases, starting with repository structure and engineering workflows before moving into tooling, interface development, and lab integration.
 
 ## Phase 1: Baseline Framework
 
 Status: Complete
-
-Goals:
-
-- Establish repository structure
-- Define mission and scope
-- Create project memory
-- Create baseline workflows
-- Create templates and schemas
-- Create operating manual
-- Create end-to-end example
 
 Completed:
 
@@ -38,117 +28,109 @@ Completed:
 
 ## Phase 2: Local Tooling
 
-Status: Planned
+Status: In Progress
 
-Goals:
+Completed:
 
-- Add simple local tooling to generate artifacts from templates
-- Add repository validation helpers
-- Add schema validation
-- Improve repeatability
+- [x] Local CLI skeleton
+- [x] CLI usage documentation
+- [x] CLI tests
+- [x] CI test workflow
 
-Planned work:
+Planned:
 
-- [ ] Create CLI skeleton
-- [ ] Add command to create engineering request
-- [ ] Add command to create engineering package
-- [ ] Add command to create ADR
-- [ ] Add command to create validation checklist
-- [ ] Add command to create rollback plan
-- [ ] Add command to validate schemas
-- [ ] Add command to print workflow map
-- [ ] Add basic tests
+- [ ] Add CLI command for security review artifacts
+- [ ] Add CLI command for IaC package artifacts
+- [ ] Add CLI command for workflow map output
+- [ ] Add CLI command for schema validation
+- [ ] Add CLI command for project status
 
-## Phase 3: Daedalus Web Interface
+## Phase 3: Repository Quality
 
-Status: Planned
+Status: In Progress
 
-Goals:
+Completed:
 
-- Create a simple web interface for the Daedalus workflow
-- Allow humans to submit requests and generate structured artifacts
-- Keep approval gates visible
+- [x] Repository validation script
+- [x] GitHub Actions validation workflow
+- [x] CLI test integration
+- [x] GitHub issue templates
+- [x] Pull request template
+- [x] CODEOWNERS
 
-Planned work:
+Planned:
 
-- [ ] Build basic web UI
-- [ ] Add request intake form
-- [ ] Add artifact preview
-- [ ] Add approval status fields
-- [ ] Add links to project memory
-- [ ] Add export-to-Markdown support
-- [ ] Add GitHub issue integration option
+- [ ] Improve schema validation
+- [ ] Add Markdown link checks
+- [ ] Add diagram validation
+- [ ] Add release checklist
+- [ ] Add changelog
 
 ## Phase 4: Lab Integration
 
 Status: Planned
 
-Goals:
+Planned:
 
-- Connect Daedalus artifacts to real lab workflows without autonomous execution
-- Keep implementation manual or approval-gated
+- [ ] Proxmox planning templates
+- [ ] Cloudflare Tunnel planning templates
+- [ ] Kubernetes service planning templates
+- [ ] Ansible role proposal templates
+- [ ] Backup and restore package examples
+- [ ] Identity-aware access examples
+- [ ] Internal service deployment examples
 
-Planned work:
-
-- [ ] Add Proxmox planning templates
-- [ ] Add Cloudflare Tunnel planning templates
-- [ ] Add Kubernetes service planning templates
-- [ ] Add Ansible role proposal templates
-- [ ] Add backup and restore package examples
-- [ ] Add identity-aware access examples
-- [ ] Add internal service deployment examples
-
-## Phase 5: Security and Compliance Expansion
+## Phase 5: Web Interface
 
 Status: Planned
 
-Goals:
+Planned:
 
-- Improve threat modeling and security review depth
-- Add stronger validation and guardrail checks
+- [ ] Basic web UI
+- [ ] Request intake form
+- [ ] Artifact preview
+- [ ] Approval status fields
+- [ ] Project memory links
+- [ ] Markdown export
+- [ ] GitHub issue integration option
 
-Planned work:
+## Phase 6: Security and Compliance Expansion
 
-- [ ] Add threat model examples
-- [ ] Add abuse-case library
-- [ ] Add Zero Trust checklist
-- [ ] Add secrets handling checklist
-- [ ] Add public exposure checklist
-- [ ] Add backup safety checklist
-- [ ] Add privileged automation checklist
+Status: Planned
 
-## Phase 6: Portfolio Polish
+Planned:
+
+- [ ] Threat model examples
+- [ ] Abuse-case library
+- [ ] Zero Trust checklist
+- [ ] Secrets handling checklist
+- [ ] Public exposure checklist
+- [ ] Backup safety checklist
+- [ ] Privileged automation checklist
+
+## Phase 7: Portfolio Polish
 
 Status: In Progress
 
-Goals:
-
-- Make the project understandable to engineers, recruiters, and future maintainers
-- Show real engineering judgment and process
-
-Planned work:
+Completed:
 
 - [x] Portfolio summary
 - [x] README refresh
-- [ ] Add diagrams
-- [ ] Add screenshots
-- [ ] Add architecture overview
-- [ ] Add demo workflow
-- [ ] Add LinkedIn-ready project summary
+- [x] Architecture diagrams
 
-## Future Ideas
+Planned:
 
-Potential future additions:
+- [ ] Screenshots
+- [ ] Architecture overview
+- [ ] Demo workflow
+- [ ] LinkedIn-ready project summary
+- [ ] Release tag
 
-- Local SQLite project memory index
-- Static site documentation output
-- GitHub Actions validation
-- Markdown linting
-- Schema linting
-- Mermaid diagrams
-- Request-to-package generator
-- Human approval tracker
-- Artifact status dashboard
-- Integration with a local LLM
-- Integration with a private Git server
-- Integration with a lab web portal
+## How to Contribute
+
+- Open issues for specific enhancements.
+- Submit pull requests with documentation and tests when applicable.
+- Preserve human approval gates.
+- Preserve validation and rollback requirements.
+- Do not include plaintext secrets.
+- Keep CI green.
