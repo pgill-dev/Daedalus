@@ -1,0 +1,66 @@
+flowchart TD
+    H[Human Engineer] --> ER[Engineering Request]
+
+    ER --> WF[Workflow System]
+
+    subgraph WF[Workflow and Documentation Layer]
+        RR[Readiness Review]
+        EP[Engineering Package]
+        SR[Security Review]
+        VC[Validation Checklist]
+        RB[Rollback Plan]
+        ADR[Architecture Decision Record]
+    end
+
+    WF --> AG[Artifact Generation Layer]
+
+    subgraph AG[Artifact Generation Layer]
+        PROMPTS[Prompts]
+        TEMPLATES[Templates]
+        SCHEMAS[Schemas]
+        CLI[Local CLI]
+    end
+
+    AG --> PROP[Proposed Artifacts]
+    PROP --> HR[Human Review and Approval]
+
+    HR --> DECISION{Approved?}
+    DECISION -- No --> REVISE[Revise, Reject, or Supersede]
+    REVISE --> ER
+
+    DECISION -- Yes --> MANUAL[Manual Implementation]
+    MANUAL --> EVIDENCE[Validation Evidence]
+
+    EVIDENCE --> MEM[Project Memory Layer]
+
+    subgraph MEM[Project Memory Layer]
+        ARCH[Architecture Notes]
+        DEC[Decision Records]
+        OUT[Generated Outputs]
+        PLANS[Plans]
+        VAL[Validation Records]
+        ROLL[Rollback Records]
+        THREAT[Threat Models]
+    end
+
+    subgraph QA[Validation and Quality Layer]
+        REPOVAL[Repository Validation]
+        SCHEMAVAL[Schema Validation]
+        TESTS[CLI Tests]
+        CI[GitHub Actions]
+    end
+
+    AG --> QA
+    QA --> HR
+
+    classDef human fill:#f5f5f5,stroke:#333,stroke-width:2px;
+    classDef workflow fill:#e8f4ff,stroke:#333,stroke-width:1px;
+    classDef memory fill:#e9f7ef,stroke:#333,stroke-width:1px;
+    classDef quality fill:#fff4d6,stroke:#333,stroke-width:1px;
+    classDef stop fill:#fdecea,stroke:#333,stroke-width:1px;
+
+    class H,HR,MANUAL human;
+    class WF,RR,EP,SR,VC,RB,ADR,AG,PROMPTS,TEMPLATES,SCHEMAS,CLI,PROP workflow;
+    class MEM,ARCH,DEC,OUT,PLANS,VAL,ROLL,THREAT memory;
+    class QA,REPOVAL,SCHEMAVAL,TESTS,CI quality;
+    class REVISE stop;

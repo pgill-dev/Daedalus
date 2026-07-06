@@ -9,6 +9,7 @@ This index maps the Daedalus repository so humans and Daedalus can quickly find 
 | Path | Purpose |
 |---|---|
 | `README.md` | Main project overview |
+| `docs/ARCHITECTURE-OVERVIEW.md` | High-level platform architecture |
 | `docs/DAEDALUS-OPERATING-MANUAL.md` | Main operating manual |
 | `docs/CLI-USAGE.md` | CLI usage documentation |
 | `docs/PORTFOLIO-SUMMARY.md` | Portfolio-ready project summary |
@@ -30,6 +31,17 @@ This index maps the Daedalus repository so humans and Daedalus can quickly find 
 | `docs/workflows/adr-workflow.md` | Defines architecture decision records |
 | `docs/workflows/ci-validation-workflow.md` | Defines repository, schema, and CLI CI validation |
 | `docs/workflows/schema-validation-workflow.md` | Defines standalone JSON schema validation |
+
+## Diagrams
+
+| Path | Purpose |
+|---|---|
+| `docs/diagrams/README.md` | Diagram index |
+| `docs/diagrams/daedalus-workflow.mmd` | End-to-end workflow diagram |
+| `docs/diagrams/repository-architecture.mmd` | Repository architecture diagram |
+| `docs/diagrams/human-in-the-loop-model.mmd` | Human approval model diagram |
+| `docs/diagrams/zero-trust-lab-relationship.mmd` | Daedalus and lab relationship diagram |
+| `docs/diagrams/platform-architecture.mmd` | Layered platform architecture diagram |
 
 ## GitHub Issue Templates
 
