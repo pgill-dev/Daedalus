@@ -1,0 +1,31 @@
+# Daedalus CODEOWNERS
+#
+# This file defines default review ownership for repository areas.
+# Adjust usernames or teams as the project grows.
+
+# Default owner for all files
+* @pgill-dev
+
+# GitHub workflows and repository governance
+.github/ @pgill-dev
+
+# Operating docs and workflow documentation
+docs/ @pgill-dev
+
+# Project memory and decision records
+memory/ @pgill-dev
+
+# Prompts and output contracts
+prompts/ @pgill-dev
+
+# Schemas
+schemas/ @pgill-dev
+
+# Templates
+templates/ @pgill-dev
+
+# Examples
+examples/ @pgill-dev
+
+# Scripts and validation tooling
+scripts/ @pgill-dev
