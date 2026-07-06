@@ -1,0 +1,170 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pgill-dev/Daedalus/schemas/adr.schema.json",
+  "title": "Daedalus Architecture Decision Record",
+  "type": "object",
+  "required": [
+    "adr_number",
+    "title",
+    "status",
+    "date",
+    "decision_owner",
+    "context",
+    "decision",
+    "options_considered",
+    "rationale",
+    "consequences",
+    "security_considerations",
+    "validation_impact",
+    "rollback_impact",
+    "human_approval"
+  ],
+  "properties": {
+    "adr_number": {
+      "type": "string",
+      "pattern": "^[0-9]{4}$"
+    },
+    "title": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["Proposed", "Approved", "Superseded", "Deprecated", "Rejected"]
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "decision_owner": {
+      "type": "string"
+    },
+    "related_records": {
+      "type": "object",
+      "properties": {
+        "engineering_request": {
+          "type": "string"
+        },
+        "engineering_package": {
+          "type": "string"
+        },
+        "security_review": {
+          "type": "string"
+        },
+        "validation_checklist": {
+          "type": "string"
+        },
+        "rollback_plan": {
+          "type": "string"
+        },
+        "supersedes": {
+          "type": "string"
+        },
+        "superseded_by": {
+          "type": "string"
+        }
+      }
+    },
+    "context": {
+      "type": "string"
+    },
+    "decision": {
+      "type": "string"
+    },
+    "options_considered": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "summary", "pros", "cons"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "pros": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "cons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "rationale": {
+      "type": "string"
+    },
+    "consequences": {
+      "type": "object",
+      "required": ["positive", "negative", "neutral"],
+      "properties": {
+        "positive": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "negative": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "neutral": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "security_considerations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "validation_impact": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rollback_impact": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "human_approval": {
+      "type": "object",
+      "required": ["approval_required", "approved_by", "approval_date", "approval_notes"],
+      "properties": {
+        "approval_required": {
+          "type": "boolean"
+        },
+        "approved_by": {
+          "type": "string"
+        },
+        "approval_date": {
+          "type": "string"
+        },
+        "approval_notes": {
+          "type": "string"
+        }
+      }
+    },
+    "follow_up_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
