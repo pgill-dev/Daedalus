@@ -10,7 +10,7 @@ on:
 
 jobs:
   validate-repo:
-    name: Validate repository structure and CLI
+    name: Validate repository structure, schemas, and CLI
     runs-on: ubuntu-latest
 
     steps:
@@ -30,6 +30,9 @@ jobs:
 
       - name: Run repository validation
         run: python scripts/validate_repo.py
+
+      - name: Run schema validation
+        run: python scripts/validate_schemas.py
 
       - name: Run CLI tests
         run: python -m pytest

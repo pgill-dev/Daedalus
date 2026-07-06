@@ -28,7 +28,8 @@ This index maps the Daedalus repository so humans and Daedalus can quickly find 
 | `docs/workflows/validation-and-rollback-workflow.md` | Defines validation and rollback process |
 | `docs/workflows/iac-generation-guardrails.md` | Defines safe IaC generation rules |
 | `docs/workflows/adr-workflow.md` | Defines architecture decision records |
-| `docs/workflows/ci-validation-workflow.md` | Defines repository and CLI CI validation |
+| `docs/workflows/ci-validation-workflow.md` | Defines repository, schema, and CLI CI validation |
+| `docs/workflows/schema-validation-workflow.md` | Defines standalone JSON schema validation |
 
 ## GitHub Issue Templates
 
@@ -43,7 +44,7 @@ This index maps the Daedalus repository so humans and Daedalus can quickly find 
 
 | Path | Purpose |
 |---|---|
-| `.github/workflows/validate-repo.yml` | Runs repository validation, CLI tests, and CLI smoke checks |
+| `.github/workflows/validate-repo.yml` | Runs repository validation, schema validation, CLI tests, and CLI smoke checks |
 
 ## Workflow Prompts
 
@@ -105,7 +106,8 @@ This index maps the Daedalus repository so humans and Daedalus can quickly find 
 | `daedalus/cli.py` | CLI entry point |
 | `daedalus/generators/` | Artifact generators |
 | `scripts/validate_repo.py` | Repository validation script |
-| `tests/` | CLI and generator tests |
+| `scripts/validate_schemas.py` | JSON schema validation script |
+| `tests/` | CLI, generator, repo detection, and schema validation tests |
 | `pytest.ini` | Pytest configuration |
 | `pyproject.toml` | Python project metadata |
 

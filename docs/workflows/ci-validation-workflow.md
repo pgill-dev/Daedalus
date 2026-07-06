@@ -19,12 +19,68 @@ The current workflow checks:
 - Repository structure
 - Required files and directories
 - JSON schema syntax
+- Schema metadata
+- Schema ID uniqueness
+- Schema title uniqueness
 - Real Git merge conflict markers
 - Obvious plaintext secret patterns
 - Markdown top-level headings where appropriate
 - CLI package installation
 - CLI unit tests
 - CLI smoke commands
+
+## Commands Run by CI
+
+```bash
+python scripts/validate_repo.py
+python scripts/validate_schemas.py
+python -m pytest
+daedalus --help
+daedalus init-check
+```
+
+## Validation Layers
+
+### Repository Validation
+
+Repository validation confirms that expected files and directories exist and that common repository hygiene issues are not present.
+
+Script:
+
+```text
+scripts/validate_repo.py
+```
+
+### Schema Validation
+
+Schema validation confirms that JSON schemas are structurally healthy, have required metadata, and do not duplicate schema IDs or titles.
+
+Script:
+
+```text
+scripts/validate_schemas.py
+```
+
+### CLI Tests
+
+CLI tests confirm that artifact generators and repository detection continue to work.
+
+Test path:
+
+```text
+tests/
+```
+
+### CLI Smoke Checks
+
+CLI smoke checks confirm that the installed command is available and can detect the repository.
+
+Commands:
+
+```bash
+daedalus --help
+daedalus init-check
+```
 
 ## Important Validation Notes
 
@@ -41,15 +97,6 @@ Safe written example:
 ```
 
 This documentation intentionally avoids writing the exact raw marker sequence so the repository validator does not flag the explanation itself.
-
-## Commands Run by CI
-
-```bash
-python scripts/validate_repo.py
-python -m pytest
-daedalus --help
-daedalus init-check
-```
 
 ## Human Approval Model
 
@@ -91,6 +138,12 @@ A schema file contains invalid JSON.
 
 Fix the JSON syntax and rerun validation.
 
+### Duplicate Schema ID or Title
+
+A schema file has the same `$id` or `title` as another schema.
+
+Update the duplicate metadata so each schema is unique.
+
 ### Merge Conflict Marker
 
 A file contains unresolved Git conflict marker lines from a merge.
@@ -108,6 +161,7 @@ Fix the CLI or update the tests to match the intended behavior.
 CI validation is healthy when:
 
 - Repository validation passes
+- Schema validation passes
 - CLI tests pass
 - CLI smoke checks pass
 - GitHub Actions reports a green check
