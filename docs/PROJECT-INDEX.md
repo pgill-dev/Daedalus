@@ -13,8 +13,11 @@ This index maps the Daedalus repository so humans and Daedalus can quickly find 
 | `docs/ARCHITECTURE-OVERVIEW.md` | High-level platform architecture |
 | `docs/DAEDALUS-OPERATING-MANUAL.md` | Main operating manual |
 | `docs/CLI-USAGE.md` | CLI usage documentation |
+| `docs/LINKEDIN-PROJECT-SUMMARY.md` | LinkedIn-ready project summary |
+| `docs/PORTFOLIO-README.md` | Portfolio-focused README |
 | `docs/PORTFOLIO-SUMMARY.md` | Portfolio-ready project summary |
 | `docs/PROJECT-INDEX.md` | Repository index |
+| `docs/PROJECT-PITCH.md` | Interview and project pitch |
 | `docs/QUICKSTART.md` | How to use the repository |
 | `docs/RELEASE-CHECKLIST.md` | Release checklist |
 | `docs/ROADMAP.md` | Project roadmap |
@@ -50,74 +53,6 @@ This index maps the Daedalus repository so humans and Daedalus can quickly find 
 | `docs/diagrams/human-in-the-loop-model.mmd` | Human approval model diagram |
 | `docs/diagrams/zero-trust-lab-relationship.mmd` | Daedalus and lab relationship diagram |
 | `docs/diagrams/platform-architecture.mmd` | Layered platform architecture diagram |
-
-## GitHub Issue Templates
-
-| Path | Purpose |
-|---|---|
-| `.github/ISSUE_TEMPLATE/engineering-request.md` | Engineering request intake form |
-| `.github/ISSUE_TEMPLATE/bug-report.md` | Bug report form |
-| `.github/ISSUE_TEMPLATE/documentation-update.md` | Documentation update form |
-| `.github/ISSUE_TEMPLATE/workflow-improvement.md` | Workflow improvement form |
-
-## GitHub Workflows
-
-| Path | Purpose |
-|---|---|
-| `.github/workflows/validate-repo.yml` | Runs repository validation, schema validation, CLI tests, and CLI smoke checks |
-
-## Workflow Prompts
-
-| Path | Purpose |
-|---|---|
-| `prompts/workflows/engineering-request-review.md` | Reviews request readiness |
-| `prompts/workflows/security-review.md` | Performs proposed security review |
-| `prompts/workflows/validation-checklist.md` | Generates validation checklist |
-| `prompts/workflows/rollback-plan.md` | Generates rollback plan |
-| `prompts/workflows/iac-generation.md` | Generates proposed IaC packages |
-| `prompts/workflows/adr-generation.md` | Generates ADRs |
-
-## Output Contracts
-
-| Path | Purpose |
-|---|---|
-| `prompts/output-contracts/engineering-package.md` | Engineering package structure |
-| `prompts/output-contracts/iac-package.md` | IaC package structure |
-
-## System Prompts
-
-| Path | Purpose |
-|---|---|
-| `prompts/system/daedalus-operating-rules.md` | Core Daedalus behavior rules |
-
-## Templates
-
-| Path | Purpose |
-|---|---|
-| `templates/engineering-package-template.md` | Engineering package template |
-| `templates/security-review-template.md` | Security review template |
-| `templates/validation-checklist-template.md` | Validation checklist template |
-| `templates/rollback-plan-template.md` | Rollback plan template |
-| `templates/iac-package-template.md` | IaC package template |
-| `templates/adr-template.md` | ADR template |
-| `templates/ansible/playbook-skeleton.yml` | Safe Ansible skeleton |
-| `templates/kubernetes/base-manifest.yaml` | Safe Kubernetes skeleton |
-| `templates/terraform/main.tf` | Terraform/OpenTofu main skeleton |
-| `templates/terraform/variables.tf` | Terraform/OpenTofu variables skeleton |
-| `templates/terraform/outputs.tf` | Terraform/OpenTofu outputs skeleton |
-| `templates/scripts/safe-bash-template.sh` | Safe Bash script template |
-| `templates/scripts/safe-powershell-template.ps1` | Safe PowerShell script template |
-
-## Schemas
-
-| Path | Purpose |
-|---|---|
-| `schemas/engineering-package.schema.json` | Engineering package schema |
-| `schemas/security-review.schema.json` | Security review schema |
-| `schemas/validation-checklist.schema.json` | Validation checklist schema |
-| `schemas/rollback-plan.schema.json` | Rollback plan schema |
-| `schemas/iac-package.schema.json` | IaC package schema |
-| `schemas/adr.schema.json` | ADR schema |
 
 ## CLI and Tooling
 

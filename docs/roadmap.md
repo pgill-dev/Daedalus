@@ -28,7 +28,7 @@ Completed:
 
 ## Phase 2: Local Tooling
 
-Status: In Progress
+Status: Complete for MVP
 
 Completed:
 
@@ -47,11 +47,12 @@ Planned:
 
 ## Phase 3: Repository Quality
 
-Status: In Progress
+Status: Complete for MVP
 
 Completed:
 
 - [x] Repository validation script
+- [x] Schema validation script
 - [x] GitHub Actions validation workflow
 - [x] CLI test integration
 - [x] GitHub issue templates
@@ -60,13 +61,31 @@ Completed:
 
 Planned:
 
-- [ ] Improve schema validation
 - [ ] Add Markdown link checks
 - [ ] Add diagram validation
-- [ ] Add release checklist
-- [ ] Add changelog
+- [ ] Add release automation
+- [ ] Add artifact content validation
 
-## Phase 4: Lab Integration
+## Phase 4: Portfolio Layer
+
+Status: Complete for MVP
+
+Completed:
+
+- [x] Portfolio summary
+- [x] README refresh
+- [x] Architecture diagrams
+- [x] LinkedIn project summary
+- [x] Project pitch
+
+Planned:
+
+- [ ] Screenshots
+- [ ] Demo GIF
+- [ ] Public project page
+- [ ] Walkthrough video
+
+## Phase 5: Lab Integration
 
 Status: Planned
 
@@ -80,7 +99,7 @@ Planned:
 - [ ] Identity-aware access examples
 - [ ] Internal service deployment examples
 
-## Phase 5: Web Interface
+## Phase 6: Web Interface
 
 Status: Planned
 
@@ -94,7 +113,7 @@ Planned:
 - [ ] Markdown export
 - [ ] GitHub issue integration option
 
-## Phase 6: Security and Compliance Expansion
+## Phase 7: Security and Compliance Expansion
 
 Status: Planned
 
@@ -108,29 +127,8 @@ Planned:
 - [ ] Backup safety checklist
 - [ ] Privileged automation checklist
 
-## Phase 7: Portfolio Polish
+## Next Milestone
 
-Status: In Progress
+Step 25 closes the MVP baseline and creates the `v0.2.0` tag.
 
-Completed:
-
-- [x] Portfolio summary
-- [x] README refresh
-- [x] Architecture diagrams
-
-Planned:
-
-- [ ] Screenshots
-- [ ] Architecture overview
-- [ ] Demo workflow
-- [ ] LinkedIn-ready project summary
-- [ ] Release tag
-
-## How to Contribute
-
-- Open issues for specific enhancements.
-- Submit pull requests with documentation and tests when applicable.
-- Preserve human approval gates.
-- Preserve validation and rollback requirements.
-- Do not include plaintext secrets.
-- Keep CI green.
+After that, Daedalus moves from baseline buildout into feature development.
