@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pgill-dev/Daedalus/schemas/security-review.schema.json",
+  "title": "Daedalus Security Review",
+  "type": "object",
+  "required": [
+    "date",
+    "reviewer",
+    "status",
+    "risk_level",
+    "summary",
+    "affected_assets",
+    "trust_boundaries",
+    "security_assumptions",
+    "findings",
+    "abuse_cases",
+    "mitigations",
+    "human_approval_gate",
+    "recommended_decision"
+  ],
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "reviewer": {
+      "type": "string",
+      "const": "Daedalus"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["Proposed Review", "Human Reviewed", "Accepted Risk", "Rejected", "Superseded"]
+    },
+    "related_request": {
+      "type": "string"
+    },
+    "related_package": {
+      "type": "string"
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": ["Low", "Medium", "High", "Critical"]
+    },
+    "summary": {
+      "type": "string"
+    },
+    "affected_assets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "trust_boundaries": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "security_assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "finding", "severity", "impact", "recommendation"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "finding": {
+            "type": "string"
+          },
+          "severity": {
+            "type": "string",
+            "enum": ["Low", "Medium", "High", "Critical"]
+          },
+          "impact": {
+            "type": "string"
+          },
+          "recommendation": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "abuse_cases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "mitigations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "logging_and_monitoring": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "secrets_and_credentials": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "backup_and_recovery_impact": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rollback_review": {
+      "type": "string"
+    },
+    "residual_risk": {
+      "type": "string"
+    },
+    "human_approval_gate": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "recommended_decision": {
+      "type": "string",
+      "enum": [
+        "Proceed to human review",
+        "Revise before approval",
+        "Split into smaller request",
+        "Reject as unsafe or out of scope"
+      ]
+    },
+    "follow_up_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
