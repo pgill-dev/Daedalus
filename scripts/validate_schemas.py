@@ -23,6 +23,15 @@ REQUIRED_SCHEMA_FIELDS = [
 ]
 
 
+def display_path(path: Path) -> str:
+    """Return a readable path for repo files and temporary test files."""
+
+    try:
+        return str(path.relative_to(REPO_ROOT))
+    except ValueError:
+        return str(path)
+
+
 def load_schema(path: Path) -> dict:
     """Load a JSON schema file."""
 
@@ -43,20 +52,20 @@ def validate_schema_file(path: Path) -> list[str]:
     try:
         schema = load_schema(path)
     except Exception as exc:
-        return [f"{path.relative_to(REPO_ROOT)}: invalid JSON or schema root: {exc}"]
+        return [f"{display_path(path)}: invalid JSON or schema root: {exc}"]
 
     for field in REQUIRED_SCHEMA_FIELDS:
         if field not in schema:
-            errors.append(f"{path.relative_to(REPO_ROOT)}: missing required field '{field}'")
+            errors.append(f"{display_path(path)}: missing required field '{field}'")
 
     if schema.get("type") != "object":
-        errors.append(f"{path.relative_to(REPO_ROOT)}: root type should be 'object'")
+        errors.append(f"{display_path(path)}: root type should be 'object'")
 
     if "required" in schema and not isinstance(schema["required"], list):
-        errors.append(f"{path.relative_to(REPO_ROOT)}: 'required' must be a list")
+        errors.append(f"{display_path(path)}: 'required' must be a list")
 
     if "properties" in schema and not isinstance(schema["properties"], dict):
-        errors.append(f"{path.relative_to(REPO_ROOT)}: 'properties' must be an object")
+        errors.append(f"{display_path(path)}: 'properties' must be an object")
 
     return errors
 
@@ -67,12 +76,12 @@ def validate_all_schemas(schema_dir: Path = SCHEMA_DIR) -> list[str]:
     errors: list[str] = []
 
     if not schema_dir.exists():
-        return [f"schema directory not found: {schema_dir.relative_to(REPO_ROOT)}"]
+        return [f"schema directory not found: {display_path(schema_dir)}"]
 
     schema_files = sorted(schema_dir.glob("*.json"))
 
     if not schema_files:
-        return [f"no schema files found in {schema_dir.relative_to(REPO_ROOT)}"]
+        return [f"no schema files found in {display_path(schema_dir)}"]
 
     ids: dict[str, Path] = {}
     titles: dict[str, Path] = {}
@@ -90,21 +99,21 @@ def validate_all_schemas(schema_dir: Path = SCHEMA_DIR) -> list[str]:
         title = str(schema.get("title", "")).strip()
 
         if not schema_id:
-            errors.append(f"{path.relative_to(REPO_ROOT)}: empty $id")
+            errors.append(f"{display_path(path)}: empty $id")
         elif schema_id in ids:
             errors.append(
-                f"{path.relative_to(REPO_ROOT)}: duplicate $id also used by "
-                f"{ids[schema_id].relative_to(REPO_ROOT)}"
+                f"{display_path(path)}: duplicate $id also used by "
+                f"{display_path(ids[schema_id])}"
             )
         else:
             ids[schema_id] = path
 
         if not title:
-            errors.append(f"{path.relative_to(REPO_ROOT)}: empty title")
+            errors.append(f"{display_path(path)}: empty title")
         elif title in titles:
             errors.append(
-                f"{path.relative_to(REPO_ROOT)}: duplicate title also used by "
-                f"{titles[title].relative_to(REPO_ROOT)}"
+                f"{display_path(path)}: duplicate title also used by "
+                f"{display_path(titles[title])}"
             )
         else:
             titles[title] = path
