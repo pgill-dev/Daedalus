@@ -14,6 +14,7 @@ This index maps the Daedalus repository so humans and Daedalus can quickly find 
 | `docs/DAEDALUS-OPERATING-MANUAL.md` | Main operating manual |
 | `docs/CLI-USAGE.md` | CLI usage documentation |
 | `docs/LINKEDIN-PROJECT-SUMMARY.md` | LinkedIn-ready project summary |
+| `docs/MVP-CLOSEOUT.md` | MVP closeout and release preparation |
 | `docs/PORTFOLIO-README.md` | Portfolio-focused README |
 | `docs/PORTFOLIO-SUMMARY.md` | Portfolio-ready project summary |
 | `docs/PROJECT-INDEX.md` | Repository index |

@@ -77,6 +77,7 @@ Completed:
 - [x] Architecture diagrams
 - [x] LinkedIn project summary
 - [x] Project pitch
+- [x] MVP closeout
 
 Planned:
 
@@ -127,8 +128,8 @@ Planned:
 - [ ] Backup safety checklist
 - [ ] Privileged automation checklist
 
-## Next Milestone
+## Current Milestone
 
-Step 25 closes the MVP baseline and creates the `v0.2.0` tag.
+`v0.2.0` closes the MVP baseline.
 
-After that, Daedalus moves from baseline buildout into feature development.
+After this milestone, Daedalus moves from baseline buildout into feature development.

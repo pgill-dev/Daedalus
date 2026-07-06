@@ -26,6 +26,9 @@ This project uses milestone-style releases.
 - Project index
 - Workflow map
 - Portfolio summary
+- Portfolio README
+- LinkedIn project summary
+- Project pitch
 - Roadmap
 - Quickstart
 - End-to-end engineering package example
@@ -34,13 +37,16 @@ This project uses milestone-style releases.
 - Pull request template
 - CODEOWNERS
 - Mermaid architecture diagrams
+- Architecture overview
 - Local Daedalus CLI skeleton
 - CLI usage documentation
 - CLI tests
 - Schema validation tooling
 - Schema validation in CI
-- Architecture overview
 - First lab engineering package
+- Release checklist
+- Release notes
+- MVP closeout
 
 ### Safety Model
 
