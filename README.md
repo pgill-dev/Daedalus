@@ -1,4 +1,5 @@
 # Daedalus
+<<<<<<< HEAD
 
 Daedalus is an AI-assisted engineering platform designed to support the planning, documentation, security analysis, and controlled automation of a self-hosted Zero Trust engineering lab.
 
@@ -105,3 +106,6 @@ ClickUp-compatible task output
   ↓
 Repository skeleton
 ```
+=======
+AI-assisted engineering platform designed to support the planning, documentation, security analysis, and controlled automation of a self-hosted Zero Trust engineering lab.
+>>>>>>> c7deed0b1ad1fe7057cb1798c2b323eaca29621a
