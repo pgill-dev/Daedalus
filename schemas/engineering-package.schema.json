@@ -1,69 +1,281 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pgill-dev/Daedalus/schemas/engineering-package.schema.json",
   "title": "Daedalus Engineering Package",
   "type": "object",
   "required": [
-    "project_name",
-    "requirement_interpretation",
+    "package_id",
+    "date",
+    "author",
+    "status",
+    "risk_level",
+    "request_summary",
+    "scope",
+    "current_state",
+    "desired_outcome",
     "assumptions",
-    "proposed_architecture",
-    "security_considerations",
-    "implementation_phases",
-    "validation_procedure",
-    "rollback_procedure",
-    "approval_gates"
+    "risks",
+    "proposed_engineering_plan",
+    "generated_artifacts",
+    "validation_checklist",
+    "rollback_plan",
+    "threat_model_notes",
+    "human_approval_gate",
+    "completion_criteria"
   ],
   "properties": {
-    "project_name": { "type": "string" },
-    "status": { "type": "string" },
-    "requirement_interpretation": { "type": "string" },
-    "assumptions": {
-      "type": "array",
-      "items": { "type": "string" }
+    "package_id": {
+      "type": "string"
     },
-    "constraints": {
-      "type": "array",
-      "items": { "type": "string" }
+    "date": {
+      "type": "string",
+      "format": "date"
     },
-    "proposed_architecture": { "type": "string" },
-    "security_considerations": {
-      "type": "array",
-      "items": { "type": "string" }
+    "author": {
+      "type": "string",
+      "const": "Daedalus"
     },
-    "dependencies": {
-      "type": "array",
-      "items": { "type": "string" }
+    "status": {
+      "type": "string",
+      "enum": ["Proposed", "Approved", "Rejected", "Superseded"]
     },
-    "implementation_phases": {
+    "risk_level": {
+      "type": "string",
+      "enum": ["Low", "Medium", "High", "Critical"]
+    },
+    "related_request": {
+      "type": "string"
+    },
+    "related_adrs": {
       "type": "array",
       "items": {
-        "type": "object",
-        "required": ["name", "description"],
-        "properties": {
-          "name": { "type": "string" },
-          "description": { "type": "string" },
-          "deliverables": {
-            "type": "array",
-            "items": { "type": "string" }
+        "type": "string"
+      }
+    },
+    "related_memory_records": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "request_summary": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "object",
+      "required": ["in_scope", "out_of_scope"],
+      "properties": {
+        "in_scope": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "out_of_scope": {
+          "type": "array",
+          "items": {
+            "type": "string"
           }
         }
       }
     },
-    "validation_procedure": {
-      "type": "array",
-      "items": { "type": "string" }
+    "current_state": {
+      "type": "object",
+      "required": ["confirmed_facts", "unknowns"],
+      "properties": {
+        "confirmed_facts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "unknowns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
     },
-    "rollback_procedure": {
-      "type": "array",
-      "items": { "type": "string" }
+    "desired_outcome": {
+      "type": "string"
     },
-    "approval_gates": {
+    "assumptions": {
       "type": "array",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
-    "project_management_tasks": {
+    "risks": {
       "type": "array",
-      "items": { "type": "object" }
+      "items": {
+        "type": "object",
+        "required": ["risk", "impact", "likelihood", "mitigation"],
+        "properties": {
+          "risk": {
+            "type": "string"
+          },
+          "impact": {
+            "type": "string"
+          },
+          "likelihood": {
+            "type": "string"
+          },
+          "mitigation": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "proposed_engineering_plan": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["phase", "steps"],
+        "properties": {
+          "phase": {
+            "type": "string"
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "generated_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "type", "path", "description"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "validation_checklist": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["check", "expected_result"],
+        "properties": {
+          "check": {
+            "type": "string"
+          },
+          "expected_result": {
+            "type": "string"
+          },
+          "result": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "rollback_plan": {
+      "type": "object",
+      "required": ["rollback_trigger", "rollback_steps", "rollback_validation"],
+      "properties": {
+        "rollback_trigger": {
+          "type": "string"
+        },
+        "rollback_steps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rollback_validation": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "threat_model_notes": {
+      "type": "object",
+      "required": ["assets", "trust_boundaries", "threats"],
+      "properties": {
+        "assets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "trust_boundaries": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "threats": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["threat", "impact", "mitigation"],
+            "properties": {
+              "threat": {
+                "type": "string"
+              },
+              "impact": {
+                "type": "string"
+              },
+              "mitigation": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "human_approval_gate": {
+      "type": "object",
+      "required": ["required_actions", "approval_status"],
+      "properties": {
+        "required_actions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "approval_status": {
+          "type": "string"
+        },
+        "approved_by": {
+          "type": "string"
+        },
+        "approval_date": {
+          "type": "string"
+        }
+      }
+    },
+    "completion_criteria": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "follow_up_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
     }
   }
 }
