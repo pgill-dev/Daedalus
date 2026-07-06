@@ -1,0 +1,33 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+
+# Secrets
+*.key
+*.pem
+*.p12
+*.pfx
+secrets.*
+*.secret
+
+# Logs
+*.log
+logs/
+
+# Generated local output
+output/
+tmp/

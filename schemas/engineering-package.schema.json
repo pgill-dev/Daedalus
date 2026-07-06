@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Daedalus Engineering Package",
+  "type": "object",
+  "required": [
+    "project_name",
+    "requirement_interpretation",
+    "assumptions",
+    "proposed_architecture",
+    "security_considerations",
+    "implementation_phases",
+    "validation_procedure",
+    "rollback_procedure",
+    "approval_gates"
+  ],
+  "properties": {
+    "project_name": { "type": "string" },
+    "status": { "type": "string" },
+    "requirement_interpretation": { "type": "string" },
+    "assumptions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "constraints": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "proposed_architecture": { "type": "string" },
+    "security_considerations": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "implementation_phases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "description"],
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "deliverables": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "validation_procedure": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "rollback_procedure": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "approval_gates": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "project_management_tasks": {
+      "type": "array",
+      "items": { "type": "object" }
+    }
+  }
+}

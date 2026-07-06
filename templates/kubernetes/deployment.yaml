@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: placeholder-service
+  namespace: placeholder-namespace
+  labels:
+    app: placeholder-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: placeholder-service
+  template:
+    metadata:
+      labels:
+        app: placeholder-service
+    spec:
+      containers:
+        - name: placeholder-service
+          image: replace-me:latest
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - secretRef:
+                name: placeholder-secret
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 30

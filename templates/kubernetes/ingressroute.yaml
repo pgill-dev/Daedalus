@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: placeholder-service
+  namespace: placeholder-namespace
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`placeholder.example.com`)
+      kind: Rule
+      services:
+        - name: placeholder-service
+          port: 80
+  tls:
+    secretName: placeholder-tls
