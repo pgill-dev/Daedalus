@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "daedalus-engineering"
+version = "0.1.0"
+description = "AI-assisted engineering platform scaffolding for a self-hosted Zero Trust lab."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+  { name = "Paden Gillispie" }
+]
+license = { text = "MIT" }
+keywords = ["infrastructure", "homelab", "zero-trust", "engineering", "documentation"]
+dependencies = []
+
+[project.scripts]
+daedalus = "daedalus.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["daedalus*"]
