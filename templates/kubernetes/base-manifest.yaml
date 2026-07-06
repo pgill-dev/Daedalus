@@ -1,0 +1,52 @@
+---
+# Proposed Kubernetes manifest generated for Daedalus review.
+# Status: Proposed
+# Human approval required before kubectl apply.
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: daedalus-placeholder
+  labels:
+    app.kubernetes.io/managed-by: daedalus
+    daedalus/status: proposed
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: daedalus-placeholder
+  namespace: daedalus-placeholder
+  labels:
+    daedalus/status: proposed
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: daedalus-placeholder
+  namespace: daedalus-placeholder
+  labels:
+    app: daedalus-placeholder
+    daedalus/status: proposed
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: daedalus-placeholder
+  template:
+    metadata:
+      labels:
+        app: daedalus-placeholder
+    spec:
+      serviceAccountName: daedalus-placeholder
+      containers:
+        - name: placeholder
+          image: nginx:stable
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi

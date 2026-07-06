@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/pgill-dev/Daedalus/schemas/iac-package.schema.json",
+  "title": "Daedalus IaC Package",
+  "type": "object",
+  "required": [
+    "date",
+    "author",
+    "status",
+    "risk_level",
+    "target_platform",
+    "summary",
+    "scope",
+    "assumptions",
+    "required_variables",
+    "secrets_handling",
+    "generated_files",
+    "safety_notes",
+    "validation_steps",
+    "rollback_steps",
+    "human_approval_gate"
+  ],
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "author": {
+      "type": "string",
+      "const": "Daedalus"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["Proposed", "Approved", "Rejected", "Superseded"]
+    },
+    "related_request": {
+      "type": "string"
+    },
+    "related_package": {
+      "type": "string"
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": ["Low", "Medium", "High", "Critical"]
+    },
+    "target_platform": {
+      "type": "string",
+      "enum": ["Ansible", "Terraform/OpenTofu", "Kubernetes", "Docker Compose", "Script", "Other"]
+    },
+    "summary": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "object",
+      "required": ["in_scope", "out_of_scope"],
+      "properties": {
+        "in_scope": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "out_of_scope": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "required_variables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "purpose", "example", "required"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "purpose": {
+            "type": "string"
+          },
+          "example": {
+            "type": "string"
+          },
+          "required": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "secrets_handling": {
+      "type": "string"
+    },
+    "generated_files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "purpose"],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "purpose": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "safety_notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "validation_steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["check", "expected_result"],
+        "properties": {
+          "check": {
+            "type": "string"
+          },
+          "expected_result": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "rollback_steps": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "human_approval_gate": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "follow_up_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

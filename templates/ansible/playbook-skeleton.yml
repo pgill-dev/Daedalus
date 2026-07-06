@@ -1,24 +1,27 @@
 ---
-- name: Configure {{ service_name }}
-  hosts: "{{ target_hosts | default('all') }}"
+# Proposed Ansible playbook generated for Daedalus review.
+# Status: Proposed
+# Human approval required before execution.
+
+- name: Proposed Daedalus playbook
+  hosts: all
   become: true
   gather_facts: true
 
   vars:
-    service_name: "{{ service_name }}"
+    daedalus_change_status: proposed
 
   pre_tasks:
-    - name: Confirm target operating system
+    - name: Confirm this playbook is proposed work
       ansible.builtin.debug:
-        msg: "Running against {{ inventory_hostname }} on {{ ansible_distribution }} {{ ansible_distribution_version }}"
+        msg: "This playbook is proposed and requires human approval before use."
 
   tasks:
     - name: Placeholder task
       ansible.builtin.debug:
-        msg: "Add implementation tasks here."
+        msg: "Replace this task with approved implementation content."
 
-  handlers:
-    - name: Restart service
-      ansible.builtin.service:
-        name: "{{ service_name }}"
-        state: restarted
+  post_tasks:
+    - name: Validation reminder
+      ansible.builtin.debug:
+        msg: "Run the approved validation checklist after implementation."
