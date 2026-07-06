@@ -1,0 +1,51 @@
+flowchart TD
+    A[Human Request] --> B[Engineering Request]
+    B --> C[Request Readiness Review]
+
+    C --> D{Request Ready?}
+    D -- Not Ready --> E[Clarify Scope, Context, and Constraints]
+    E --> B
+
+    D -- Ready with Assumptions --> F[Document Assumptions]
+    D -- Ready --> G[Generate Engineering Package]
+    F --> G
+
+    G --> H{Infrastructure Impacting?}
+    H -- Yes --> I[Security Review]
+    H -- No --> J[Human Review]
+
+    I --> K[Validation Checklist]
+    K --> L[Rollback Plan]
+    L --> M{Major Architecture Decision?}
+
+    M -- Yes --> N[Create ADR]
+    M -- No --> J
+    N --> J
+
+    J --> O{Human Approved?}
+    O -- No --> P[Revise, Reject, or Supersede]
+    P --> B
+
+    O -- Yes --> Q[Manual Implementation or Controlled Execution]
+    Q --> R[Collect Validation Evidence]
+    R --> S{Validation Passed?}
+
+    S -- No --> T[Stop Changes]
+    T --> U[Manual Rollback]
+    U --> V[Rollback Validation]
+    V --> W[Record Outcome in Memory]
+
+    S -- Yes --> W[Record Outcome in Memory]
+    W --> X[Update ADRs or Architecture Notes if Needed]
+
+    classDef human fill:#f5f5f5,stroke:#333,stroke-width:2px;
+    classDef proposed fill:#e8f4ff,stroke:#333,stroke-width:1px;
+    classDef review fill:#fff4d6,stroke:#333,stroke-width:1px;
+    classDef memory fill:#e9f7ef,stroke:#333,stroke-width:1px;
+    classDef danger fill:#fdecea,stroke:#333,stroke-width:1px;
+
+    class A,J,O,Q human;
+    class B,C,F,G,K,L,N proposed;
+    class I,R,S,V review;
+    class W,X memory;
+    class T,U danger;

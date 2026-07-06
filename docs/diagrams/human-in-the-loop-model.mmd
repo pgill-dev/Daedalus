@@ -1,0 +1,50 @@
+flowchart TD
+    A[Daedalus Generates Proposed Work] --> B[Human Review Required]
+
+    B --> C{Artifact Type}
+
+    C --> D[Documentation]
+    C --> E[Engineering Package]
+    C --> F[IaC or Config]
+    C --> G[Access or Identity Change]
+    C --> H[Backup or Recovery Change]
+    C --> I[Security Risk Acceptance]
+
+    D --> J{Human Approval Needed?}
+    E --> K{Human Approval Needed?}
+    F --> L{Human Approval Needed?}
+    G --> M{Human Approval Needed?}
+    H --> N{Human Approval Needed?}
+    I --> O{Human Approval Needed?}
+
+    J -- Usually for publishing --> P[Approve, Revise, or Reject]
+    K -- Yes --> P
+    L -- Yes Before Apply --> P
+    M -- Yes Before Change --> P
+    N -- Yes Before Change --> P
+    O -- Yes Before Acceptance --> P
+
+    P --> Q{Approved?}
+    Q -- No --> R[Revise, Reject, or Supersede]
+    Q -- Yes --> S[Manual Implementation or Controlled Execution]
+
+    S --> T[Human Executes or Authorizes Work]
+    T --> U[Human Provides Evidence]
+    U --> V[Daedalus Records Outcome]
+
+    V --> W[Project Memory]
+    V --> X[ADR Update]
+    V --> Y[Validation Record]
+    V --> Z[Rollback Record if Used]
+
+    classDef ai fill:#e8f4ff,stroke:#333,stroke-width:1px;
+    classDef human fill:#f5f5f5,stroke:#333,stroke-width:2px;
+    classDef decision fill:#fff4d6,stroke:#333,stroke-width:1px;
+    classDef memory fill:#e9f7ef,stroke:#333,stroke-width:1px;
+    classDef stop fill:#fdecea,stroke:#333,stroke-width:1px;
+
+    class A,V ai;
+    class B,P,S,T,U human;
+    class C,J,K,L,M,N,O,Q decision;
+    class W,X,Y,Z memory;
+    class R stop;

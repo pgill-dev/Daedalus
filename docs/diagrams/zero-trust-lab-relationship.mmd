@@ -1,0 +1,58 @@
+flowchart LR
+    subgraph Lab[Self-Hosted Zero Trust Lab]
+        PVE[Proxmox VE]
+        PBS[Proxmox Backup Server]
+        K8S[Kubernetes or Containers]
+        ACCESS[Identity-Aware Access]
+        TUNNEL[Cloudflare Tunnel or Reverse Proxy]
+        GUAC[Remote Access Services]
+        DOCS[Internal Documentation]
+        MON[Logging and Monitoring]
+    end
+
+    subgraph Daedalus[Daedalus Engineering Platform]
+        REQ[Engineering Requests]
+        PKG[Engineering Packages]
+        SEC[Security Reviews]
+        VAL[Validation Checklists]
+        RB[Rollback Plans]
+        ADR[Architecture Decision Records]
+        MEM[Project Memory]
+        IAC[Proposed IaC and Configs]
+    end
+
+    HUMAN[Human Engineer] --> REQ
+    REQ --> PKG
+    PKG --> SEC
+    PKG --> VAL
+    PKG --> RB
+    PKG --> ADR
+    PKG --> IAC
+    SEC --> MEM
+    VAL --> MEM
+    RB --> MEM
+    ADR --> MEM
+    IAC --> HUMAN
+
+    HUMAN -->|Approves and manually applies| Lab
+
+    IAC -. Proposed only .-> PVE
+    IAC -. Proposed only .-> K8S
+    IAC -. Proposed only .-> ACCESS
+    IAC -. Proposed only .-> TUNNEL
+
+    ACCESS --> DOCS
+    TUNNEL --> ACCESS
+    PVE --> PBS
+    PVE --> K8S
+    GUAC --> PVE
+    MON --> Lab
+
+    classDef lab fill:#e9f7ef,stroke:#333,stroke-width:1px;
+    classDef daedalus fill:#e8f4ff,stroke:#333,stroke-width:1px;
+    classDef human fill:#f5f5f5,stroke:#333,stroke-width:2px;
+    classDef proposed stroke-dasharray: 5 5;
+
+    class PVE,PBS,K8S,ACCESS,TUNNEL,GUAC,DOCS,MON lab;
+    class REQ,PKG,SEC,VAL,RB,ADR,MEM,IAC daedalus;
+    class HUMAN human;

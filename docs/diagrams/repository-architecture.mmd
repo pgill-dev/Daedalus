@@ -1,0 +1,63 @@
+flowchart LR
+    R[Daedalus Repository] --> GH[.github]
+    R --> DOCS[docs]
+    R --> MEM[memory]
+    R --> PROMPTS[prompts]
+    R --> TEMPLATES[templates]
+    R --> SCHEMAS[schemas]
+    R --> EXAMPLES[examples]
+    R --> SCRIPTS[scripts]
+
+    GH --> ISSUE[Issue Templates]
+    GH --> ACTIONS[GitHub Actions]
+
+    ISSUE --> ERI[Engineering Request Intake]
+    ACTIONS --> VALIDATE[Repository Validation]
+
+    DOCS --> MANUAL[Operating Manual]
+    DOCS --> INDEX[Project Index]
+    DOCS --> MAP[Workflow Map]
+    DOCS --> ROADMAP[Roadmap]
+    DOCS --> WORKFLOWS[Workflow Docs]
+    DOCS --> DIAGRAMS[Diagrams]
+
+    WORKFLOWS --> ERW[Engineering Request]
+    WORKFLOWS --> EPW[Engineering Package]
+    WORKFLOWS --> SRW[Security Review]
+    WORKFLOWS --> VRW[Validation and Rollback]
+    WORKFLOWS --> IACW[IaC Guardrails]
+    WORKFLOWS --> ADRW[ADR Workflow]
+
+    MEM --> ARCH[Architecture Notes]
+    MEM --> DECISIONS[ADRs and Decisions]
+    MEM --> OUTPUTS[Generated Outputs]
+    MEM --> PLANS[Plans]
+    MEM --> ROLLBACK[Rollback Records]
+    MEM --> THREATS[Threat Models]
+    MEM --> VALIDATION[Validation Records]
+
+    PROMPTS --> WP[Workflow Prompts]
+    PROMPTS --> OC[Output Contracts]
+    PROMPTS --> SYS[System Rules]
+
+    TEMPLATES --> ARTIFACTS[Artifact Templates]
+    TEMPLATES --> ANSIBLE[Ansible Skeletons]
+    TEMPLATES --> K8S[Kubernetes Skeletons]
+    TEMPLATES --> TF[Terraform/OpenTofu Skeletons]
+    TEMPLATES --> SCRIPT_TEMPLATES[Safe Script Templates]
+
+    SCHEMAS --> JSON[JSON Schemas]
+
+    EXAMPLES --> E2E[End-to-End Examples]
+
+    SCRIPTS --> VALIDATOR[validate_repo.py]
+
+    classDef repo fill:#f5f5f5,stroke:#333,stroke-width:2px;
+    classDef docs fill:#e8f4ff,stroke:#333,stroke-width:1px;
+    classDef memory fill:#e9f7ef,stroke:#333,stroke-width:1px;
+    classDef guard fill:#fff4d6,stroke:#333,stroke-width:1px;
+
+    class R repo;
+    class DOCS,MANUAL,INDEX,MAP,ROADMAP,WORKFLOWS,DIAGRAMS docs;
+    class MEM,ARCH,DECISIONS,OUTPUTS,PLANS,ROLLBACK,THREATS,VALIDATION memory;
+    class GH,ACTIONS,VALIDATE,SCRIPTS,VALIDATOR guard;
