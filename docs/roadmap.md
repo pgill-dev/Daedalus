@@ -1,135 +1,183 @@
 # Daedalus Roadmap
 
-## Purpose
+## Phase I — Engineering Brain
 
-This roadmap tracks planned development for Daedalus.
+### Objective
 
-Daedalus is being built in phases, starting with repository structure and engineering workflows before moving into tooling, interface development, and lab integration.
+Create the reasoning engine and structured engineering output process.
 
-## Phase 1: Baseline Framework
+### Deliverables
 
-Status: Complete
+- Local LLM runtime
+- System prompt
+- Prompt library
+- Engineering personas
+- Markdown output templates
+- Architecture templates
+- Validation checklist template
+- Rollback plan template
 
-Completed:
+### Exit Criteria
 
-- [x] Baseline repository
-- [x] Project memory
-- [x] Engineering request workflow
-- [x] Engineering package output contract
-- [x] Security review workflow
-- [x] Validation and rollback workflow
-- [x] IaC generation guardrails
-- [x] ADR workflow
-- [x] Operating manual
-- [x] Project index
-- [x] Workflow map
-- [x] End-to-end example
-- [x] Portfolio README and roadmap
+A request such as:
 
-## Phase 2: Local Tooling
+> Build Vaultwarden.
 
-Status: Complete for MVP
+Produces:
 
-Completed:
+- Architecture
+- Risks
+- Checklist
+- Validation plan
+- Rollback plan
+- ClickUp-style task hierarchy
+- Git repository structure
 
-- [x] Local CLI skeleton
-- [x] CLI usage documentation
-- [x] CLI tests
-- [x] CI test workflow
+## Phase II — Project Management
 
-Planned:
+### Objective
 
-- [ ] Add CLI command for security review artifacts
-- [ ] Add CLI command for IaC package artifacts
-- [ ] Add CLI command for workflow map output
-- [ ] Add CLI command for schema validation
-- [ ] Add CLI command for project status
+Integrate project planning outputs with task-management and Git workflows.
 
-## Phase 3: Repository Quality
+### Integrations
 
-Status: Complete for MVP
+- ClickUp
+- GitHub or Gitea
 
-Completed:
+### Deliverables
 
-- [x] Repository validation script
-- [x] Schema validation script
-- [x] GitHub Actions validation workflow
-- [x] CLI test integration
-- [x] GitHub issue templates
-- [x] Pull request template
-- [x] CODEOWNERS
+- Epic generation
+- Task generation
+- Milestone generation
+- Sprint plan generation
+- Repository skeleton generation
 
-Planned:
+### Exit Criteria
 
-- [ ] Add Markdown link checks
-- [ ] Add diagram validation
-- [ ] Add release automation
-- [ ] Add artifact content validation
+One prompt creates a complete engineering project plan with tasks and repository structure.
 
-## Phase 4: Portfolio Layer
+## Phase III — Infrastructure Awareness
 
-Status: Complete for MVP
+### Objective
 
-Completed:
+Allow Daedalus to understand the environment without making changes.
 
-- [x] Portfolio summary
-- [x] README refresh
-- [x] Architecture diagrams
-- [x] LinkedIn project summary
-- [x] Project pitch
-- [x] MVP closeout
+### Integrations
 
-Planned:
+- Proxmox
+- Kubernetes
+- Proxmox Backup Server
 
-- [ ] Screenshots
-- [ ] Demo GIF
-- [ ] Public project page
-- [ ] Walkthrough video
+### Capabilities
 
-## Phase 5: Lab Integration
+Read-only:
 
-Status: Planned
+- Inventory
+- VM status
+- Cluster health
+- Backup status
 
-Planned:
+Generate:
 
-- [ ] Proxmox planning templates
-- [ ] Cloudflare Tunnel planning templates
-- [ ] Kubernetes service planning templates
-- [ ] Ansible role proposal templates
-- [ ] Backup and restore package examples
-- [ ] Identity-aware access examples
-- [ ] Internal service deployment examples
+- IaC
+- Kubernetes manifests
+- Documentation
+- Change plans
 
-## Phase 6: Web Interface
+### Exit Criteria
 
-Status: Planned
+Daedalus can reference current lab state and produce accurate plans without write access.
 
-Planned:
+## Phase IV — Engineering Memory
 
-- [ ] Basic web UI
-- [ ] Request intake form
-- [ ] Artifact preview
-- [ ] Approval status fields
-- [ ] Project memory links
-- [ ] Markdown export
-- [ ] GitHub issue integration option
+### Objective
 
-## Phase 7: Security and Compliance Expansion
+Preserve architecture decisions, design rationale, runbooks, and lessons learned.
 
-Status: Planned
+### Store
 
-Planned:
+- Architecture decisions
+- Network diagrams
+- Inventory
+- Runbooks
+- Lessons learned
+- Change history
 
-- [ ] Threat model examples
-- [ ] Abuse-case library
-- [ ] Zero Trust checklist
-- [ ] Secrets handling checklist
-- [ ] Public exposure checklist
-- [ ] Backup safety checklist
-- [ ] Privileged automation checklist
+### Example Query
 
-## Current Milestone
+> Why is VLAN 30 isolated?
 
-`v0.2.0` closes the MVP baseline.
+Daedalus should answer with the original design rationale and supporting documentation.
 
-After this milestone, Daedalus moves from baseline buildout into feature development.
+## Phase V — Security Engineering
+
+### Objective
+
+Integrate security validation and hardening workflows.
+
+### Integrations
+
+- Rapid7
+- CIS benchmarks
+- STIG references
+- GOAD lab findings
+
+### Generate
+
+- Hardening recommendations
+- Validation checklists
+- Risk assessments
+- Threat models
+- Remediation plans
+
+### Exit Criteria
+
+Daedalus can produce security-aware engineering packages tied to findings, controls, and validation steps.
+
+## Phase VI — Controlled Automation
+
+### Objective
+
+Enable human-approved execution after planning and validation.
+
+### Workflow
+
+```text
+User request
+  ↓
+Architecture
+  ↓
+ClickUp tasks
+  ↓
+Git artifacts
+  ↓
+IaC generation
+  ↓
+Human approval
+  ↓
+Execution
+  ↓
+Validation
+  ↓
+Documentation update
+```
+
+### Required Controls
+
+- Explicit approval
+- Change summary
+- Validation plan
+- Rollback plan
+- Audit trail
+- No silent execution
+
+## Outliers
+
+Do not build:
+
+- Another chatbot
+- Another ChatGPT wrapper
+- Voice assistant
+- Autonomous infrastructure controller
+
+The differentiator is engineering reasoning.

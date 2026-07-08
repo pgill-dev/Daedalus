@@ -1,130 +1,61 @@
-# Security Review Prompt
+# Workflow Prompt: Security Review
 
-## Purpose
-
-Use this prompt to perform a security review of a Daedalus engineering request or engineering package.
-
-The goal is to identify risk before any infrastructure-impacting work is approved.
+Use this workflow when reviewing a proposed architecture, deployment, service, or change for security risk.
 
 ## Input
 
-Provide one of the following:
+Target system or change:
 
-- Engineering request
-- Engineering package
-- Architecture note
-- Configuration draft
-- Infrastructure as Code draft
-- Access path proposal
-- Rollback or validation plan
-
-## Review Instructions
-
-Perform a structured security review.
-
-Do not approve the change.
-
-Do not claim the change is safe without noting assumptions and residual risk.
-
-Do not execute commands.
-
-Do not generate exploit steps.
-
-Focus on defensive engineering review.
-
-## Required Output Format
-
-```markdown
-# Security Review: <Title>
-
-## Review Metadata
-
-**Date:**  
-**Reviewer:** Daedalus  
-**Status:** Proposed Review  
-**Related Request:**  
-**Related Package:**  
-**Risk Level:** Low | Medium | High | Critical  
-
-## Summary
-
-Briefly summarize what was reviewed.
-
-## Affected Assets
-
-List the systems, services, data, identities, or infrastructure components affected.
-
-## Trust Boundaries
-
-Identify trust boundaries crossed or modified by the proposal.
-
-Examples:
-
-- Internet to Cloudflare
-- Cloudflare to internal service
-- VPN to management network
-- User identity to application session
-- Kubernetes ingress to service
-- Backup system to protected datastore
-
-## Security Assumptions
-
-List assumptions used during review.
-
-## Findings
-
-| ID | Finding | Severity | Impact | Recommendation |
-|---|---|---|---|---|
-| SR-001 |  | Low/Medium/High/Critical |  |  |
-
-## Abuse Cases
-
-List realistic ways the proposed design could be misused or fail insecurely.
-
-## Mitigations
-
-List recommended controls or design changes.
-
-## Logging and Monitoring
-
-Describe what should be logged, monitored, or alerted on.
-
-## Secrets and Credentials
-
-Describe whether secrets are involved and how they should be handled.
-
-## Backup and Recovery Impact
-
-Describe any effect on backup, restore, retention, or disaster recovery.
-
-## Rollback Review
-
-State whether the rollback plan appears complete and safe.
-
-## Residual Risk
-
-Describe remaining risk after mitigations.
-
-## Human Approval Gate
-
-List what requires explicit human approval before implementation.
-
-## Recommended Decision
-
-Choose one:
-
-- Proceed to human review
-- Revise before approval
-- Split into smaller request
-- Reject as unsafe or out of scope
+```text
+{{TARGET}}
 ```
 
-## Rules
+Known environment context:
 
-Daedalus must separate security assumptions from confirmed facts.
+```text
+{{ENVIRONMENT_CONTEXT}}
+```
 
-Daedalus must identify human approval points.
+## Required Output
 
-Daedalus must preserve Zero Trust assumptions.
+# Security Review: {{TARGET}}
 
-Daedalus must not treat generated outputs as approved by default.
+## 1. Scope
+
+Define what is being reviewed.
+
+## 2. Assets
+
+List important systems, data, credentials, services, and dependencies.
+
+## 3. Trust Boundaries
+
+Identify user, service, network, identity, secret, and management boundaries.
+
+## 4. Threats
+
+Identify likely threats and abuse paths.
+
+## 5. Risks
+
+List risks with impact and likelihood.
+
+## 6. Existing Controls
+
+List controls already present or assumed.
+
+## 7. Recommended Controls
+
+Recommend hardening and monitoring improvements.
+
+## 8. Validation Checklist
+
+Provide checks that confirm security controls are working.
+
+## 9. Residual Risk
+
+Explain what risk remains after controls are applied.
+
+## 10. Approval Notes
+
+Identify anything that requires human decision before implementation.

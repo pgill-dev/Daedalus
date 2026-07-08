@@ -1,178 +1,107 @@
 # Daedalus
 
-Daedalus is an AI-assisted engineering platform for a self-hosted Zero Trust lab.
+Daedalus is an AI-assisted engineering platform designed to support the planning, documentation, security analysis, and controlled automation of a self-hosted Zero Trust engineering lab.
 
-It is designed to act as an infrastructure engineering copilot that helps plan, document, review, validate, and prepare infrastructure work while keeping a human in the approval loop.
+Daedalus is not an autonomous operator. It is an engineering copilot that helps an engineer plan, document, reason about, validate, and maintain infrastructure while keeping a human in the approval loop.
 
-Daedalus is not an autonomous operator.
+## Portfolio Positioning
+
+This project is separate from the Zero Trust Engineering Lab.
+
+- **Zero Trust Engineering Lab**: the environment and test range.
+- **Daedalus**: the engineering platform that helps operate, document, and improve the environment.
+
+The lab proves infrastructure and security engineering ability. Daedalus proves internal tooling, AI-assisted engineering workflow design, documentation discipline, and controlled automation planning.
 
 ## Mission
 
-Design and build an AI-assisted engineering platform that serves as an infrastructure engineer for a self-hosted Zero Trust lab.
+Design and build an AI-assisted engineering platform that serves as an infrastructure engineering copilot for a self-hosted Zero Trust lab.
 
-The system should plan, document, reason about, and assist in building and maintaining infrastructure while keeping a human in the approval loop.
+Daedalus should help produce:
 
-## Project Concept
-
-The lab is the test range.
-
-Daedalus is the engineer.
-
-Daedalus exists to bring engineering discipline to infrastructure work by producing structured artifacts such as:
-
-- Engineering requests
-- Readiness reviews
-- Engineering packages
-- Architecture Decision Records
-- Security reviews
+- Engineering plans
+- Architecture documents
+- Git documentation
+- Infrastructure-as-Code skeletons
+- Kubernetes manifests
 - Validation checklists
 - Rollback plans
+- Architecture decision records
 - Threat models
-- Infrastructure as Code drafts
-- Project memory records
+- Project management tasks
+- Engineering memory
 
-## Current Scope
+## Operating Principle
 
-Daedalus supports:
+Daedalus plans.  
+The engineer approves.  
+Automation executes only after explicit human approval.
 
-- Engineering planning
-- Documentation generation
-- Infrastructure as Code generation
-- Project memory maintenance
-- Architecture decision tracking
-- Validation checklist creation
-- Rollback planning
-- Threat modeling support
-- Security review support
+## Phase I Scope
 
-Daedalus does not automatically execute infrastructure changes.
+Phase I focuses on the engineering brain, not integrations or execution.
 
-## Human-in-the-Loop Rule
+Daedalus should be able to receive a request such as:
 
-All infrastructure-impacting outputs require human review and approval before use.
+> Build Vaultwarden for my Zero Trust lab.
 
-Daedalus may generate proposed changes.
+And produce:
 
-Daedalus may not directly apply changes to production or lab infrastructure.
+- Requirement interpretation
+- Assumptions and constraints
+- Proposed architecture
+- Security considerations
+- Implementation phases
+- Generated artifacts
+- Validation procedure
+- Rollback procedure
+- Approval gates
+- Documentation updates
+- ClickUp-style task hierarchy
 
 ## Repository Structure
 
 ```text
-.github/
-  ISSUE_TEMPLATE/
-    engineering-request.md
-
-docs/
-  DAEDALUS-OPERATING-MANUAL.md
-  PORTFOLIO-SUMMARY.md
-  PROJECT-INDEX.md
-  QUICKSTART.md
-  ROADMAP.md
-  WORKFLOW-MAP.md
-  workflows/
-
-examples/
-  end-to-end/
-
-memory/
-  architecture/
-  decisions/
-  outputs/
-  plans/
-  rollback/
-  threat-models/
-  validation/
-
-prompts/
-  output-contracts/
-  system/
-  workflows/
-
-schemas/
-
-templates/
+.
+├── docs/
+│   ├── project-charter.md
+│   ├── architecture.md
+│   ├── security-model.md
+│   ├── roadmap.md
+│   └── adr/
+├── prompts/
+│   ├── system/
+│   ├── workflows/
+│   └── output-contracts/
+├── templates/
+│   ├── ansible/
+│   ├── kubernetes/
+│   ├── runbooks/
+│   ├── threat-models/
+│   └── change-plans/
+├── schemas/
+├── examples/
+└── .github/
 ```
 
-## Core Workflows
+## Current Status
 
-| Workflow | Purpose |
-|---|---|
-| Engineering Request Workflow | Defines how work enters Daedalus |
-| Engineering Package Workflow | Defines the main engineering deliverable |
-| Security Review Workflow | Reviews risk before approval |
-| Validation and Rollback Workflow | Defines verification and recovery steps |
-| IaC Generation Guardrails | Controls safe IaC/config/script generation |
-| ADR Workflow | Records major architecture decisions |
-| Project Memory Workflow | Maintains persistent project context |
+Baseline repository initialized for Phase I planning and prompt/output design.
 
-## Standard Flow
+## Next Milestone
+
+Create and test the first full engineering workflow:
 
 ```text
-Human request
-  -> Engineering request
-  -> Readiness review
-  -> Engineering package
-  -> Security review
-  -> Validation checklist
-  -> Rollback plan
-  -> ADR if needed
-  -> Human approval
-  -> Manual implementation
-  -> Evidence and memory update
+User request
+  ↓
+Daedalus system prompt
+  ↓
+Structured engineering response
+  ↓
+Markdown project package
+  ↓
+ClickUp-compatible task output
+  ↓
+Repository skeleton
 ```
-
-## Example
-
-The repository includes an end-to-end example:
-
-```text
-examples/end-to-end/internal-docs-service/
-```
-
-This example demonstrates the full Daedalus workflow for deploying an internal documentation service behind identity-aware access.
-
-## Current Build Status
-
-- [x] Baseline repository
-- [x] Project memory
-- [x] Engineering request workflow
-- [x] Engineering package contract
-- [x] Security review workflow
-- [x] Validation and rollback workflow
-- [x] IaC generation guardrails
-- [x] ADR workflow
-- [x] Operating manual and project index
-- [x] End-to-end engineering package example
-- [x] Portfolio README and roadmap
-
-## Key Documents
-
-| Document | Purpose |
-|---|---|
-| `docs/DAEDALUS-OPERATING-MANUAL.md` | Main operating manual |
-| `docs/PROJECT-INDEX.md` | Repository map |
-| `docs/WORKFLOW-MAP.md` | Workflow relationships |
-| `docs/QUICKSTART.md` | How to use the repo |
-| `docs/ROADMAP.md` | Planned development path |
-| `docs/PORTFOLIO-SUMMARY.md` | Portfolio-ready project summary |
-
-## Safety Model
-
-Daedalus follows these rules:
-
-- Proposed by default
-- Human approval required
-- No automatic execution
-- No plaintext secrets
-- Validation required
-- Rollback required when applicable
-- Security review required for access, identity, exposure, backups, or privileged automation
-- ADRs required for major decisions
-
-## Status
-
-Daedalus is currently in baseline platform development.
-
-The repository contains the core operating model, workflows, templates, schemas, and an end-to-end example.
-
-Future work will focus on turning these workflows into usable tooling, automation helpers, and interface-driven engineering workflows.
