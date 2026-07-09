@@ -1,0 +1,105 @@
+# Daedalus Local Configuration Example
+#
+# Purpose:
+# This file defines local runtime settings for the Daedalus Phase I runner.
+# It is safe to commit because it contains no secrets, tokens, credentials,
+# infrastructure passwords, or environment-specific private values.
+#
+# Usage:
+# 1. Copy this file to config/daedalus.local.yml for local use.
+# 2. Adjust the local copy for your workstation or lab VM.
+# 3. Do not commit config/daedalus.local.yml if it ever contains secrets.
+
+project:
+  name: Daedalus
+  phase: Phase I
+  mode: offline_generate_only
+  description: >
+    AI-assisted infrastructure engineering copilot for generating structured
+    engineering packages, validation plans, rollback procedures, task breakdowns,
+    ADR recommendations, and documentation for a self-hosted Zero Trust lab.
+
+llm:
+  provider: ollama
+  base_url: http://localhost:11434
+  model: llama3.1:8b
+  temperature: 0.2
+  top_p: 0.9
+  stream: false
+  timeout_seconds: 180
+
+paths:
+  system_prompt: prompts/system/daedalus-system-prompt.md
+  default_workflow: prompts/workflows/vaultwarden-engineering-request.md
+  output_contract: prompts/output-contracts/engineering-package-v1.md
+  template_root: templates
+  memory_root: memory
+  output_dir: memory/outputs
+  example_output_dir: examples
+
+execution:
+  allow_live_infrastructure_access: false
+  allow_command_execution: false
+  allow_secret_generation: false
+  require_human_approval: true
+  generate_markdown: true
+  generate_html: false
+
+approval:
+  required_before_execution: true
+  required_before_git_commit: false
+  required_before_task_creation: true
+  required_before_memory_authoritative: true
+
+memory:
+  enabled: true
+  mode: reviewed_memory_only
+  authoritative_sources:
+    - docs/adr
+    - docs
+    - memory
+  forbidden_content:
+    - passwords
+    - api_keys
+    - access_tokens
+    - private_keys
+    - recovery_codes
+    - production_secrets
+
+outputs:
+  default_filename_prefix: engineering-package
+  include_timestamp: true
+  markdown_extension: .md
+  include_source_manifest: true
+  include_approval_status: true
+  approval_status_default: draft_pending_human_review
+
+validation:
+  require_output_contract_sections: true
+  require_rollback_plan: true
+  require_validation_checklist: true
+  require_security_review: true
+  require_human_approval_gates: true
+  require_adr_recommendations: true
+  fail_on_claimed_execution: true
+  fail_on_generated_secrets: true
+
+phase_i_boundaries:
+  allowed:
+    - Read local prompt files
+    - Read local documentation
+    - Read local templates
+    - Generate Markdown engineering packages
+    - Recommend tasks
+    - Recommend ADRs
+    - Recommend validation and rollback procedures
+  blocked:
+    - Apply Kubernetes manifests
+    - Run Ansible playbooks
+    - Modify Proxmox
+    - Modify PBS
+    - Modify Rapid7
+    - Create ClickUp tasks through API
+    - Push Git commits automatically
+    - Create or store secrets
+    - Execute infrastructure changes
